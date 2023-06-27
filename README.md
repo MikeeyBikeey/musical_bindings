@@ -8,7 +8,7 @@ Musical Bindings can help you build whistling muscles, tune whistling pitch, lea
 * Windows (because [active_window.rs](./src/active_window.rs) and [key_end.rs](./src/key_end.rs) use [windows](https://crates.io/crates/windows))
 
 ## Quick Setup
-1. [Download the latest release](/releases/latest/download/musical_bindings.zip) from the releases page.
+1. [Download the latest release](https://github.com/MikeeyBikeey/musical_bindings/releases/latest/download/musical_bindings.zip) from the releases page.
 2. Extract and run the downloaded `musical_bindings` application.
 3. Press the `Load Binding` button and select binding script (example scripts in the repository [binding directory](./binding/)).
 
