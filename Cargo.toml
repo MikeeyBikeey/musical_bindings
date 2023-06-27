@@ -1,0 +1,41 @@
+[package]
+name = "musical_bindings"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+keywords = ["input", "mouse", "keyboard", "music"]
+readme = "README.md"
+license = "MIT"
+
+[dependencies]
+enigo = "0.1.2"
+pitch-detector = "0.3.1"
+cpal = "0.14.2"
+ringbuf = "0.3.1"
+eframe = { version = "0.22.0", features = ["wgpu"] }
+rfd = "0.11.4"
+mlua = { version = "0.8.9", features = ["luajit52", "vendored", "send"] }
+windows = { version = "0.48", features = [
+    "Win32_Foundation",
+    "Win32_UI_WindowsAndMessaging",
+    "Win32_UI_Input_KeyboardAndMouse",
+] }
+spin_sleep = "1.1.1" # Because windows has a particularly un-accurate `thread::sleep` implementation
+
+[features]
+# For hiding the window in release builds, `cargo build --release --no-default-features`.
+# The console is not hidden by default for release builds because doing so can hide output from stdout.
+default = ["console"]
+console = []
+
+[profile.release-small]
+# Based on binary size: https://github.com/johnthagen/min-sized-rust
+# When building for release on Windows, run cmd file: `cargo-build-windows-release.cmd`
+inherits = "release"
+opt-level = 'z'     # Optimize for size
+lto = true          # Enable link-time optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations
+strip = true        # Strip symbols from binary
+# Aboring on panic is a bit much for early software. This may be a useful way to reduce the binary size in the future.
+#panic = 'abort'     # Abort on panic
