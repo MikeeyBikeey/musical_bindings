@@ -104,6 +104,7 @@ fn main() -> Result<(), eframe::Error> {
             eframe::IconData::try_from_png_bytes(include_bytes!("../icon.png")).unwrap(),
         ),
         drag_and_drop_support: true,
+        renderer: eframe::Renderer::Wgpu,
         ..Default::default()
     };
 
